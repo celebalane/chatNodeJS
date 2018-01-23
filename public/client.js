@@ -7,6 +7,8 @@
             socket.emit('newUser', pseudo);
             document.title = pseudo + ' - ' + document.title;
             $('#title').text(pseudo + ' bienvenue sur le Chat');
+            $('section').removeClass('invisible');
+            $('#login').addClass('invisible');
         });     
     }
 

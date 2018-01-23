@@ -2,28 +2,37 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>Chat avec node js</title>
-        <link rel="stylesheet" type="text/css" href="">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="style.css">
     </head>
-    <body>
-        <h1 id="title">Veuillez choisir un pseudo</h1>
+    <body class="container-fluid">
+        <h1 class="text-center">Chat node JS</h1>
+        <h2 id="title" class="text-center">Veuillez choisir un pseudo</h2>
         <!-- Zone de connexion -->
-        <section id="login">
+        <section id="login" class="row justify-content-center">
             <form action="" id="loginForm">
-                <label for="pseudo">Pseudo</label>
-                <input id="pseudo" autocomplete="off" autofocus />
-                <p><button>Connexion</button></p>
+                <div class="form-group">
+                    <label for="pseudo">Pseudo</label>
+                    <input id="pseudo" autocomplete="off" class="form-control" autofocus />
+                </div>
+                <button type="submit" class="btn btn-primary">Connexion</button>
             </form>
         </section>
-        <!-- Zone d'envoi de message -->
-        <section id="chatForm">
-            <form action="" id="formulaire_chat">
-                <input type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus />
-                <input type="submit" id="envoi_message" value="Envoyer" />
-            </form>
-        </section>
-        <!-- Zone d'affichage du chat -->
-        <section id="zone_chat"></section>
+        <div class="row justify-content-center">
+            <!-- Zone d'affichage du chat -->
+            <section id="zone_chat" class="invisible"></section>
+            <!-- Zone d'envoi de message -->
+            <section id="chatForm" class="invisible">
+                <form action="" id="formulaire_chat" class="form-inline">
+                    <div class="form-group">
+                        <input type="text" name="message" id="message" class="form-control" placeholder="Votre message..." size="50" autofocus />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                </form>
+            </section>
+        </div>
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
         <script src="client.js"></script>
