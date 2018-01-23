@@ -6,23 +6,26 @@
         <link rel="stylesheet" type="text/css" href="">
     </head>
     <body>
-        <h1>Bienvenue sur le chat</h1>
+        <h1 id="title">Veuillez choisir un pseudo</h1>
+        <!-- Zone de connexion -->
         <section id="login">
             <form action="" id="loginForm">
-                <label for="pseudo">Username</label>
+                <label for="pseudo">Pseudo</label>
                 <input id="pseudo" autocomplete="off" autofocus />
                 <p><button>Connexion</button></p>
             </form>
         </section>
-        <form action="" id="formulaire_chat">
-            <input type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus />
-            <input type="submit" id="envoi_message" value="Envoyer" />
-        </form>
+        <!-- Zone d'envoi de message -->
+        <section id="chatForm">
+            <form action="" id="formulaire_chat">
+                <input type="text" name="message" id="message" placeholder="Votre message..." size="50" autofocus />
+                <input type="submit" id="envoi_message" value="Envoyer" />
+            </form>
+        </section>
+        <!-- Zone d'affichage du chat -->
         <section id="zone_chat"></section>
         <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
         <script src="/socket.io/socket.io.js"></script>
-        <script src="client.js">
-            
-        </script>
+        <script src="client.js"></script>
     </body>
 </html>
