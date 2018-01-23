@@ -1,17 +1,15 @@
-var app = require('express')();
+var express = require('express');
+var app = express();
 var server = require('http').createServer(app);
 var fs = require('fs');
 var ent = require('ent');
 var io = require('socket.io').listen(server);
 
-app.get('/', function (req, res) {   //Index
-  res.sendFile(__dirname + '/index.html');
-});
+app.use("/", express.static(__dirname + "/public"));
 
 io.sockets.on('connection', function (socket, pseudo) {
     // Dès qu'on nous donne un pseudo, on le stocke en variable de session et on informe les autres personnes
     socket.on('newUser', function(pseudo) {
-    	console.log(pseudo);
         socket.pseudo = ent.encode(pseudo);
         socket.broadcast.emit('newUser', pseudo);
     });
@@ -22,8 +20,15 @@ io.sockets.on('connection', function (socket, pseudo) {
         socket.broadcast.emit('message', {pseudo: socket.pseudo, message: message});
     }); 
 
+    // Réception et envoi sur la page de l'envoyeur
+    socket.on('myMessage', function (message) {
+        myMessage = ent.encode(message);
+        socket.emit('myMessage', {pseudo: socket.pseudo, message: myMessage});
+    }); 
+
+    // Message de déconnexion envoyé à tout le monde
     socket.on('disconnect', function(pseudo){
-    	logoutMessage = {text:  socket.pseudo + " s'est déconnecté",type: 'logout'};
+    	logoutMessage = {text:  "<p><em>" + socket.pseudo + " a quitté le Chat!</em></p>",type: 'logout'};
       	socket.broadcast.emit('logout', logoutMessage);
     });
 });
