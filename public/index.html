@@ -22,9 +22,13 @@
         </section>
         <div class="row justify-content-center">
             <!-- Zone d'affichage du chat -->
-            <section id="zone_chat" class="invisible"></section>
+            <div class="col-md-6">
+                <section id="zone_chat" class="invisible"></section>
+            </div>
+        </div>
+        <div class="row justify-content-center">
             <!-- Zone d'envoi de message -->
-            <section id="chatForm" class="invisible">
+            <section id="chatForm" class="col-md-4 invisible">
                 <form action="" id="formulaire_chat" class="form-inline">
                     <div class="form-group">
                         <input type="text" name="message" id="message" class="form-control" placeholder="Votre message..." size="50" autofocus />
